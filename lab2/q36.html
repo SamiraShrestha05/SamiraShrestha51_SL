@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cookie Operations</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        input, button { padding: 8px; margin: 5px; }
+        table { border-collapse: collapse; width: 60%; margin-top: 20px; }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Cookie Management</h2>
+
+
+<input type="text" id="key" placeholder="Enter Key">
+<input type="text" id="value" placeholder="Enter Value">
+
+<br><br>
+
+
+<button onclick="setCookie()">Store Cookie</button>
+<button onclick="readCookie()">Read Cookie</button>
+<button onclick="deleteCookie()">Delete Cookie</button>
+<button onclick="deleteAllCookies()">Delete All Cookies</button>
+<button onclick="displayAllCookies()">Display All Cookies</button>
+
+
+<p id="output"></p>
+
+
+<div id="cookieTable"></div>
+
+
+   <script src="js/q36.js"></script>
+</body>
+</html>
