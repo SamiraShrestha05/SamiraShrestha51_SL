@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Counter App</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin-top: 40px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .button {
+            padding: 8px 15px;
+            font-size: 18px;
+            background-color: #4c9e62;
+            color: white;
+            border: none;
+            margin: 5px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            opacity: 0.8;
+        }
+
+        #countBox {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 6px;
+            background-color: #f2dede;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 5px;
+        }
+
+        #resetBtn {
+            margin-top: 15px;
+            padding: 8px 25px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Counter App</h2>
+
+<button class="button" onclick="increase()">+</button>
+
+<span id="countBox">0</span>
+
+<button class="button" onclick="decrease()">-</button>
+
+<br>
+
+<button id="resetBtn" class="button" onclick="resetCounter()">Reset</button>
+
+<script>
+    let count = 0;
+    let box = document.getElementById("countBox");
+
+    function increase() {
+        count++;
+        box.textContent = count;
+    }
+
+    function decrease() {
+        count--;
+        box.textContent = count;
+    }
+
+    function resetCounter() {
+        count = 0;
+        box.textContent = count;
+    }
+</script>
+
+</body>
+</html>
