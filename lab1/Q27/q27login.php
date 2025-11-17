@@ -42,8 +42,7 @@ echo 'Login failed';
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Login</title>
-</head>
-<?php
+    <?php
     if (isset($_GET['msg']) && $_GET['msg'] == 1) {
     echo 'Please login to access your dashboard';
     }

@@ -44,10 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 }
-
-if (isset($_GET['msg']) && $_GET['msg'] == 1) {
-    $message = 'Please login to access your dashboard';
-}
 ?>
 
 <!DOCTYPE html>
