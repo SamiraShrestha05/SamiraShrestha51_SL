@@ -48,7 +48,7 @@ if (isset($_POST['student_submit'])) {
     $status = $_POST['status'];
 
     if ($student_id) {
-       
+        
         $stmt = $conn->prepare("UPDATE students SET name=?, course_id=?, fee=?, rollno=?, phone=?, address=?, dob=?, status=? WHERE id=?");
         $stmt->bind_param("sidsssssi", $name, $course_id, $fee, $rollno, $phone, $address, $dob, $status, $student_id);
         $stmt->execute();

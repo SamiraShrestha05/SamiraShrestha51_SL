@@ -26,7 +26,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    
     if (empty($name)) {
         $message = "Name is required!";
-    } else {
+    }
+     else {
 
         
         if (!empty($_FILES['image']['name'])) {
