@@ -1,0 +1,1 @@
+Questions 11 and 15 are same.

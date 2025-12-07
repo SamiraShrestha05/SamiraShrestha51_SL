@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Display BCA Content using AJAX</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 30px; }
+        #content { padding: 10px; border: 1px solid #ccc; width: 500px; margin-top: 20px; }
+        button { padding: 10px 15px; }
+    </style>
+</head>
+<body>
+
+<h2>BCA Description</h2>
+
+<button onclick="loadBCAContent()">Show BCA Content</button>
+
+<div id="content">
+   
+</div>
+
+<script>
+function loadBCAContent() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'bca.txt', true);
+
+    xhr.onload = function() {
+        if(this.status === 200) {
+            document.getElementById('content').innerText = this.responseText;
+        } else {
+            document.getElementById('content').innerText = 'Unable to load content.';
+        }
+    };
+
+    xhr.onerror = function() {
+        document.getElementById('content').innerText = 'Request error...';
+    };
+
+    xhr.send();
+}
+</script>
+
+</body>
+</html>

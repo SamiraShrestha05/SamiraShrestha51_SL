@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Effects Demo</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 30px; }
+        #box {
+            width: 150px;
+            height: 150px;
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            line-height: 150px;
+            margin-bottom: 20px;
+        }
+        button {
+            margin: 5px;
+            padding: 10px 15px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>jQuery Effects Demo</h2>
+
+<div id="box">Box</div>
+
+
+<button id="hideBtn">Hide</button>
+<button id="showBtn">Show</button>
+<button id="toggleBtn">Toggle</button>
+<button id="fadeInBtn">Fade In</button>
+<button id="fadeOutBtn">Fade Out</button>
+<button id="fadeToggleBtn">Fade Toggle</button>
+<button id="slideUpBtn">Slide Up</button>
+<button id="slideDownBtn">Slide Down</button>
+<button id="slideToggleBtn">Slide Toggle</button>
+<button id="animateBtn">Animate</button>
+
+<script>
+$(document).ready(function() {
+
+    $("#hideBtn").click(function() {
+        $("#box").hide("slow");
+    });
+
+ 
+    $("#showBtn").click(function() {
+        $("#box").show("slow");
+    });
+
+ 
+    $("#toggleBtn").click(function() {
+        $("#box").toggle("slow");
+    });
+
+
+    $("#fadeInBtn").click(function() {
+        $("#box").fadeIn("slow");
+    });
+
+   
+    $("#fadeOutBtn").click(function() {
+        $("#box").fadeOut("slow");
+    });
+
+ 
+    $("#fadeToggleBtn").click(function() {
+        $("#box").fadeToggle("slow");
+    });
+
+ 
+    $("#slideUpBtn").click(function() {
+        $("#box").slideUp("slow");
+    });
+
+    
+    $("#slideDownBtn").click(function() {
+        $("#box").slideDown("slow");
+    });
+
+    
+    $("#slideToggleBtn").click(function() {
+        $("#box").slideToggle("slow");
+    });
+
+    
+    $("#animateBtn").click(function() {
+        $("#box").animate({
+            left: '+=50px',
+            height: '+=20px',
+            width: '+=20px'
+        }, 1000);
+    });
+});
+</script>
+
+</body>
+</html>
