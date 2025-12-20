@@ -1,0 +1,14 @@
+CREATE DATABASE IF NOT EXISTS bca_lab;
+USE bca_lab;
+
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL
+);
+
+
+INSERT INTO users (username, password) VALUES
+('admin', '12345'),
+('student1', 'abc123'),
+('samira', 'samira123');

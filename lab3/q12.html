@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movies List using AJAX</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+            background-color: #f4f6f8;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: white;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+
+        img {
+            width: 80px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Movies List</h2>
+<button onclick="loadMovies()">Load Movies</button>
+
+<table id="moviesTable">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Poster</th>
+            <th>Year</th>
+            <th>Genre</th>
+            <th>Rating</th>
+            <th>Director</th>
+            <th>Country</th>
+            <th>Language</th>
+            <th>Actors</th>
+        </tr>
+    </thead>
+    <tbody>
+       
+    </tbody>
+</table>
+
+<script>
+function loadMovies() {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "movies.json", true);
+
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            var movies = JSON.parse(xhr.responseText);
+            var tbody = document.querySelector("#moviesTable tbody");
+            tbody.innerHTML = "";
+
+            movies.forEach(function (movie) {
+                var row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${movie.id || ""}</td>
+                    <td>${movie.title || ""}</td>
+                    <td>${movie.poster ? `<img src="${movie.poster}">` : ""}</td>
+                    <td>${movie.year || ""}</td>
+                    <td>${movie.genre || ""}</td>
+                    <td>${movie.rating || ""}</td>
+                    <td>${movie.director || ""}</td>
+                    <td>${movie.country || ""}</td>
+                    <td>${movie.language || ""}</td>
+                    <td>${movie.actors || ""}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        } else {
+            alert("Failed to load data. Status: " + xhr.status);
+        }
+    };
+
+    xhr.send();
+}
+</script>
+
+</body>
+</html>

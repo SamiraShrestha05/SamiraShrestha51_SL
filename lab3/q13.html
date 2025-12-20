@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Password Reset</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 50px; }
+        input { padding: 8px; width: 200px; }
+        #status { margin-top: 10px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<h2>Password Reset</h2>
+
+<form>
+    <label>Username: </label>
+    <input type="text" id="username" onkeyup="checkUsername()">
+</form>
+<div id="status"></div>
+
+<script>
+function checkUsername() {
+    var username = document.getElementById('username').value;
+    if(username.length == 0) {
+        document.getElementById('status').innerText = '';
+        return;
+    }
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'q13.php?username=' + encodeURIComponent(username), true);
+
+    xhr.onload = function() {
+        if(xhr.status === 200) {
+            document.getElementById('status').innerText = xhr.responseText;
+            if(xhr.responseText === "Username available") {
+                document.getElementById('status').style.color = "green";
+            } else {
+                document.getElementById('status').style.color = "red";
+            }
+        } else {
+            document.getElementById('status').innerText = "Error connecting to server.";
+            document.getElementById('status').style.color = "red";
+        }
+    };
+
+    xhr.onerror = function() {
+        document.getElementById('status').innerText = "Request error...";
+        document.getElementById('status').style.color = "red";
+    };
+
+    xhr.send();
+}
+</script>
+
+</body>
+</html>

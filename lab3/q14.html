@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Country & City Dropdown</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 50px; }
+        select { padding: 8px; width: 200px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+<h2>Select Country and City</h2>
+
+<label>Country: </label>
+<select id="country" onchange="loadCities()">
+    <option value="">-- Select Country --</option>
+    <option value="Nepal">Nepal</option>
+    <option value="India">India</option>
+    <option value="USA">USA</option>
+    <option value="UK">UK</option>
+</select>
+
+<br>
+
+<label>City: </label>
+<select id="city">
+    <option value="">-- Select City --</option>
+</select>
+
+<script>
+function loadCities() {
+    var country = document.getElementById('country').value;
+    var citySelect = document.getElementById('city');
+
+    citySelect.innerHTML = '<option value="">-- Select City --</option>';
+
+    if(country === "") return;
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'q14.php?country=' + encodeURIComponent(country), true);
+
+    xhr.onload = function() {
+        if(xhr.status === 200) {
+            var cities = JSON.parse(xhr.responseText);
+            cities.forEach(function(city) {
+                var option = document.createElement('option');
+                option.value = city;
+                option.text = city;
+                citySelect.appendChild(option);
+            });
+        } else {
+            alert('Failed to fetch cities');
+        }
+    };
+
+    xhr.onerror = function() {
+        alert('Request error...');
+    };
+
+    xhr.send();
+}
+</script>
+
+</body>
+</html>
